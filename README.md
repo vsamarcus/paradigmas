@@ -122,3 +122,85 @@ Ambas as implementações incluem:
 - Tratamento de erros de conversão
 - Mensagens de erro claras
 - Códigos de retorno apropriados (0 para sucesso, 1 para erro)
+
+## Dicionário de Código
+
+### Versão Imperativa (`imperative.py`)
+
+#### Funções
+- `convert_number(number: Union[int, float, Decimal], language: str) -> str`: 
+  - Converte um número para sua representação por extenso
+  - Parâmetros: número e idioma
+  - Retorna: string com o número por extenso
+
+- `validate_number(number: Union[int, float, Decimal]) -> None`:
+  - Valida se o input é um valor numérico
+  - Parâmetros: número a ser validado
+  - Retorna: None ou levanta TypeError
+
+- `create_parser() -> argparse.ArgumentParser`:
+  - Cria e configura o parser de argumentos CLI
+  - Retorna: objeto ArgumentParser configurado
+
+- `main() -> int`:
+  - Ponto de entrada do programa
+  - Processa argumentos CLI e executa a conversão
+  - Retorna: 0 para sucesso, 1 para erro
+
+#### Variáveis
+- `parser`: Instância de ArgumentParser para processar argumentos CLI
+- `args`: Argumentos processados da linha de comando
+- `result`: Resultado da conversão do número para texto
+
+### Versão Orientada a Objetos (`oo.py`)
+
+#### Classe
+- `NumberToWords`: Classe principal para conversão de números
+
+#### Atributos
+- `number`: Número a ser convertido
+- `language`: Código do idioma para conversão
+
+#### Métodos
+- `__init__(self, number: Union[int, float, Decimal], language: str = 'pt_BR')`:
+  - Construtor da classe
+  - Inicializa número e idioma
+  - Valida o número recebido
+
+- `_validate_number(self, number: Union[int, float, Decimal]) -> None`:
+  - Método privado para validação do número
+  - Verifica se é um tipo numérico válido
+
+- `convert(self) -> str`:
+  - Método público principal
+  - Realiza a conversão do número para texto
+  - Retorna o resultado por extenso
+
+#### Funções Auxiliares
+- `create_parser() -> argparse.ArgumentParser`:
+  - Cria e configura o parser de argumentos CLI
+  - Retorna: objeto ArgumentParser configurado
+
+- `main() -> int`:
+  - Ponto de entrada do programa
+  - Processa argumentos e executa a conversão
+  - Retorna: 0 para sucesso, 1 para erro
+
+#### Variáveis
+- `parser`: Instância de ArgumentParser para processar argumentos CLI
+- `args`: Argumentos processados da linha de comando
+- `converter`: Instância da classe NumberToWords
+- `result`: Resultado da conversão do número para texto
+
+## Tipos de Dados Utilizados
+
+### Tipos Básicos
+- `int`: Números inteiros
+- `float`: Números decimais
+- `str`: Textos e strings
+- `bool`: Valores booleanos
+
+### Tipos Compostos
+- `Union[int, float, Decimal]`: União de tipos numéricos aceitos
+- `argparse.ArgumentParser`: Tipo para processamento de argumentos CLI
+- `Exception`: Tipos de exceções para tratamento de erros
